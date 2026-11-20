@@ -1,0 +1,38 @@
+{
+  "id": "word-types",
+  "title": "Nouns, Verbs and Adjectives",
+  "subject": "English",
+  "text": "Every word in a sentence has a job. Three of the most important jobs are done by nouns, verbs and adjectives.\n\nA noun is a word for a person, place, thing or idea. 'Teacher', 'London', 'bicycle' and 'happiness' are all nouns.\n\nA verb is a word for an action or a state of being. It tells us what someone or something does or is. 'Run', 'think', 'eat' and 'is' are verbs.\n\nAn adjective is a word that describes a noun. It tells us more about it, such as its size, colour or how it feels. In the phrase 'the tall, friendly giraffe', the words 'tall' and 'friendly' are adjectives describing the noun 'giraffe'.",
+  "exercises": [
+    {
+      "type": "categorize",
+      "question": "Drag each word into the right box.",
+      "categories": ["Nouns", "Verbs", "Adjectives"],
+      "items": [
+        { "text": "dog", "category": "Nouns" },
+        { "text": "school", "category": "Nouns" },
+        { "text": "friendship", "category": "Nouns" },
+        { "text": "jump", "category": "Verbs" },
+        { "text": "write", "category": "Verbs" },
+        { "text": "sleep", "category": "Verbs" },
+        { "text": "green", "category": "Adjectives" },
+        { "text": "noisy", "category": "Adjectives" },
+        { "text": "brave", "category": "Adjectives" }
+      ],
+      "explanation": "Nouns name things, verbs are actions, adjectives describe nouns."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "In the sentence 'The hungry cat ate quickly', which word is the adjective?",
+      "options": ["cat", "hungry", "ate", "quickly"],
+      "answer": "hungry",
+      "explanation": "'Hungry' describes the cat (a noun), so it is an adjective. 'Quickly' describes how the cat ate – that's an adverb!"
+    },
+    {
+      "type": "multiple-choice",
+      "question": "Which of these words is a verb?",
+      "options": ["happiness", "beautiful", "swim", "garden"],
+      "answer": "swim"
+    }
+  ]
+}
