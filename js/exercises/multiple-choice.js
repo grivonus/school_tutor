@@ -9,6 +9,7 @@
 // }
 
 import { el } from "../dom.js";
+import { t } from "../i18n.js";
 
 export function validate(ex) {
   const errors = [];
@@ -54,7 +55,7 @@ export function render(ex, container, onChange) {
       return {
         score: correct ? 1 : 0,
         max: 1,
-        message: correct ? "Correct! 🎉" : `Not quite. The answer is "${ex.answer}".`,
+        message: correct ? t("correct") : t("wrongAnswer", { answer: ex.answer }),
         explanation: ex.explanation,
       };
     },

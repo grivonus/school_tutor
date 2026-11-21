@@ -1,0 +1,38 @@
+{
+  "id": "word-types",
+  "title": "Nomen, Verben und Adjektive",
+  "subject": "Deutsch",
+  "text": "Jedes Wort in einem Satz hat eine Aufgabe. Drei der wichtigsten Wortarten sind Nomen, Verben und Adjektive.\n\nEin Nomen (auch Substantiv oder Namenwort) bezeichnet einen Menschen, ein Tier, einen Ort, eine Sache oder eine Idee. „Lehrerin“, „Berlin“, „Fahrrad“ und „Freude“ sind Nomen. Im Deutschen schreibt man Nomen immer groß, und man kann „der“, „die“ oder „das“ davorsetzen.\n\nEin Verb (auch Tätigkeitswort) sagt, was jemand tut oder was geschieht. „laufen“, „denken“, „essen“ und „sein“ sind Verben.\n\nEin Adjektiv (auch Eigenschaftswort) beschreibt, wie jemand oder etwas ist. In „die große, freundliche Giraffe“ sind „groß“ und „freundlich“ Adjektive. Sie beschreiben das Nomen „Giraffe“.",
+  "exercises": [
+    {
+      "type": "categorize",
+      "question": "Ziehe jedes Wort in den richtigen Kasten. Alle Wörter sind in Großbuchstaben geschrieben – so hilft dir die Großschreibung nicht!",
+      "categories": ["Nomen", "Verben", "Adjektive"],
+      "items": [
+        { "text": "HUND", "category": "Nomen" },
+        { "text": "SCHULE", "category": "Nomen" },
+        { "text": "FREUNDSCHAFT", "category": "Nomen" },
+        { "text": "SPRINGEN", "category": "Verben" },
+        { "text": "SCHREIBEN", "category": "Verben" },
+        { "text": "SCHLAFEN", "category": "Verben" },
+        { "text": "GRÜN", "category": "Adjektive" },
+        { "text": "LAUT", "category": "Adjektive" },
+        { "text": "MUTIG", "category": "Adjektive" }
+      ],
+      "explanation": "Tipp: Vor ein Nomen kann man „der“, „die“ oder „das“ setzen (der Hund). Verben kann man mit „ich“ verwenden (ich springe). Adjektive passen in die Lücke „Das ist …“ (Das ist grün)."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "Welches Wort ist im Satz „Die hungrige Katze frisst ihr Futter.“ ein Adjektiv?",
+      "options": ["Katze", "hungrige", "frisst", "Futter"],
+      "answer": "hungrige",
+      "explanation": "„hungrig“ beschreibt, wie die Katze ist – also ist es ein Adjektiv."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "Welches dieser Wörter ist ein Verb?",
+      "options": ["Freude", "schön", "schwimmen", "Garten"],
+      "answer": "schwimmen"
+    }
+  ]
+}

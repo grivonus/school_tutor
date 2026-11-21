@@ -1,25 +1,26 @@
-// Loads lessons from the lessons/ folder and checks them for mistakes,
+// Loads lessons from lessons/<language>/ (e.g. lessons/de/) and checks them for mistakes,
 // so a typo in a JSON file shows up as a clear message instead of a broken page.
 
 import { exerciseTypes, typeOf } from "./exercises/index.js";
 
-let cache = null;
+const cache = {};
 
-export async function loadLessons() {
-  if (cache) return cache;
+export async function loadLessons(lang) {
+  if (cache[lang]) return cache[lang];
+  const folder = `lessons/${lang}`;
   const lessons = [];
   const errors = [];
 
   let files;
   try {
-    files = await fetchJson("lessons/index.json");
+    files = await fetchJson(`${folder}/index.json`);
   } catch (err) {
-    return { lessons, errors: [`lessons/index.json: ${err.message}`] };
+    return { lessons, errors: [`${folder}/index.json: ${err.message}`] };
   }
 
-  const results = await Promise.allSettled(files.map((f) => fetchJson(`lessons/${f}`)));
+  const results = await Promise.allSettled(files.map((f) => fetchJson(`${folder}/${f}`)));
   results.forEach((result, i) => {
-    const file = `lessons/${files[i]}`;
+    const file = `${folder}/${files[i]}`;
     if (result.status === "rejected") {
       errors.push(`${file}: ${result.reason.message}`);
       return;
@@ -35,8 +36,8 @@ export async function loadLessons() {
     }
   });
 
-  cache = { lessons, errors };
-  return cache;
+  cache[lang] = { lessons, errors };
+  return cache[lang];
 }
 
 async function fetchJson(path) {

@@ -1,0 +1,49 @@
+{
+  "id": "volcanoes",
+  "title": "Cómo funcionan los volcanes",
+  "subject": "Geografía",
+  "text": [
+    "Muy por debajo de nuestros pies, la Tierra está extremadamente caliente. En algunos lugares, la roca se calienta tanto que se derrite. Esta roca fundida se llama magma. Como el magma es más ligero que la roca sólida que lo rodea, sube lentamente y se acumula en grandes depósitos subterráneos llamados cámaras magmáticas.",
+    "Cuando la presión en una cámara magmática se vuelve demasiado grande, el magma se abre paso hacia arriba a través de grietas en la corteza terrestre. Cuando sale a la superficie, lo llamamos erupción. En cuanto el magma llega a la superficie, recibe un nuevo nombre: lava.",
+    "No todos los volcanes entran en erupción de la misma manera. Algunos, como los de Hawái, expulsan una lava muy líquida que fluye suavemente por sus laderas. Otros, como el Vesubio en Italia, explotan con violencia y lanzan ceniza y rocas muy alto en el cielo. En el año 79, una erupción del Vesubio sepultó la ciudad romana de Pompeya bajo varios metros de ceniza.",
+    "Los volcanes que han entrado en erupción hace poco y podrían volver a hacerlo se llaman activos. Los que no han entrado en erupción desde hace mucho tiempo, pero podrían hacerlo algún día, se llaman durmientes: es como si estuvieran «dormidos». Los volcanes que, según los científicos, nunca volverán a entrar en erupción se llaman extintos."
+  ],
+  "exercises": [
+    {
+      "type": "multiple-choice",
+      "question": "¿Cómo se llama la roca fundida mientras todavía está bajo tierra?",
+      "options": ["Lava", "Magma", "Ceniza", "Corteza"],
+      "answer": "Magma",
+      "explanation": "Bajo tierra se llama magma; cuando llega a la superficie, se llama lava."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "¿Por qué sube el magma?",
+      "options": [
+        "Porque es más ligero que la roca sólida que lo rodea",
+        "Porque los volcanes lo atraen hacia arriba",
+        "Porque está más frío que la roca que lo rodea",
+        "Porque la lluvia lo empuja hacia arriba"
+      ],
+      "answer": "Porque es más ligero que la roca sólida que lo rodea"
+    },
+    {
+      "type": "multiple-choice",
+      "question": "¿Qué ciudad quedó sepultada por una erupción del Vesubio?",
+      "options": ["Roma", "Hawái", "Pompeya", "Nápoles"],
+      "answer": "Pompeya"
+    },
+    {
+      "type": "categorize",
+      "question": "Clasifica cada descripción según el tipo de volcán.",
+      "categories": ["Activo", "Durmiente", "Extinto"],
+      "items": [
+        { "text": "Entró en erupción el año pasado", "category": "Activo" },
+        { "text": "Podría entrar en erupción pronto", "category": "Activo" },
+        { "text": "«Está dormido»", "category": "Durmiente" },
+        { "text": "Lleva mucho tiempo tranquilo, pero podría despertar", "category": "Durmiente" },
+        { "text": "Nunca volverá a entrar en erupción", "category": "Extinto" }
+      ]
+    }
+  ]
+}

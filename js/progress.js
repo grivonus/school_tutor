@@ -1,6 +1,9 @@
 // Saves quiz results. For now they live in this browser (localStorage).
 // When accounts are added, only this file needs to change: the rest of the app
 // just calls getProgress() and saveResult().
+//
+// The German and Spanish versions of a lesson are scored separately,
+// so lessons are stored as "<language>/<lesson id>", e.g. "de/volcanoes".
 
 const KEY = "schoolTutor.progress";
 
