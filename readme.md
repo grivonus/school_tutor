@@ -124,3 +124,20 @@ lessons/                lesson JSON files + index.json
 ```
 
 To add a new exercise type, create a file in `js/exercises/` that exports `validate(exercise)` and `render(exercise, container, onChange)`, and register it in `js/exercises/index.js`.
+
+## Changelog
+
+### 2026-11-21 – German and Spanish (planned)
+
+The audience speaks only German and Spanish, so the app is moving away from English:
+
+- **Language switch:** a toggle with a flag (🇩🇪 / 🇪🇸) to switch the whole app between German and Spanish.
+- **Bilingual lessons:** every lesson text and its exercises will be provided in two versions, one in German and one in Spanish. The lesson file structure will change to support this.
+
+Status: planned, not yet implemented. Details to follow.
+
+### 2026-11-20 – First prototype
+
+- Lesson list, reading page, quiz and results screen (English).
+- Exercise types: multiple choice and categorize (drag and drop or tap).
+- Scores saved in the browser.
