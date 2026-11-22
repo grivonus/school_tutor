@@ -28,7 +28,26 @@ body {
 .site-header {
   background: var(--primary);
   padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
+
+/* Language switch (flags) */
+.lang-switch { display: flex; gap: 8px; }
+.flag {
+  display: flex;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.55;
+}
+.flag svg { width: 32px; height: 21px; display: block; border-radius: 2px; }
+.flag:hover { opacity: 0.85; }
+.flag[aria-pressed="true"] { opacity: 1; border-color: #fff; }
 .logo {
   color: #fff;
   font-weight: 700;
@@ -155,7 +174,7 @@ details.reread .reading { margin-top: 12px; }
   border-radius: 10px;
   margin-bottom: 16px;
 }
-.word-bank:empty::before { content: "All words placed ✓"; color: var(--muted); }
+.word-bank:empty::before { content: attr(data-empty); color: var(--muted); }
 .categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

@@ -14,6 +14,7 @@
 // Scoring: 1 point per word placed in the right box.
 
 import { el, shuffle } from "../dom.js";
+import { t } from "../i18n.js";
 
 export function validate(ex) {
   const errors = [];
@@ -38,7 +39,7 @@ export function render(ex, container, onChange) {
   let selectedChip = null;
   let locked = false;
 
-  const bank = el("div", { class: "word-bank", "aria-label": "Words to sort" });
+  const bank = el("div", { class: "word-bank", "aria-label": t("wordsToSort"), "data-empty": t("allPlaced") });
   bank.dropInto = bank;
 
   const zones = ex.categories.map((name) => {
@@ -136,8 +137,8 @@ export function render(ex, container, onChange) {
   });
 
   container.append(
-    el("p", { class: "prompt" }, ex.question || "Put each word in the right box."),
-    el("p", { class: "muted" }, "Drag the words, or tap a word and then tap a box."),
+    el("p", { class: "prompt" }, ex.question || t("sortPrompt")),
+    el("p", { class: "muted" }, t("sortHelp")),
     bank,
     el("div", { class: "categories" }, ...zones)
   );
@@ -163,7 +164,7 @@ export function render(ex, container, onChange) {
       return {
         score,
         max,
-        message: score === max ? "Perfect! 🎉" : `${score} of ${max} words in the right box.`,
+        message: score === max ? t("perfect") : t("sortScore", { score, max }),
         explanation: ex.explanation,
       };
     },

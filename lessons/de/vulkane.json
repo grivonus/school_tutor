@@ -1,0 +1,49 @@
+{
+  "id": "volcanoes",
+  "title": "Wie Vulkane funktionieren",
+  "subject": "Erdkunde",
+  "text": [
+    "Tief unter unseren Füßen ist die Erde extrem heiß. An manchen Stellen wird das Gestein so heiß, dass es schmilzt. Dieses geschmolzene Gestein nennt man Magma. Weil Magma leichter ist als das feste Gestein um es herum, steigt es langsam nach oben und sammelt sich in großen unterirdischen Hohlräumen, den Magmakammern.",
+    "Wenn der Druck in einer Magmakammer zu groß wird, drückt sich das Magma durch Risse in der Erdkruste nach oben. Bricht es an der Oberfläche hervor, nennen wir das einen Ausbruch. Sobald das Magma die Oberfläche erreicht, bekommt es einen neuen Namen: Lava.",
+    "Nicht alle Vulkane brechen auf die gleiche Weise aus. Manche, wie die Vulkane auf Hawaii, stoßen dünnflüssige Lava aus, die langsam ihre Hänge hinunterfließt. Andere, wie der Vesuv in Italien, explodieren heftig und schleudern Asche und Gestein hoch in den Himmel. Im Jahr 79 begrub ein Ausbruch des Vesuvs die römische Stadt Pompeji unter einer mehrere Meter dicken Ascheschicht.",
+    "Vulkane, die vor Kurzem ausgebrochen sind und wieder ausbrechen könnten, nennt man aktiv. Vulkane, die sehr lange nicht ausgebrochen sind, aber eines Tages wieder ausbrechen könnten, nennt man ruhend – sie „schlafen“ sozusagen. Vulkane, von denen Fachleute glauben, dass sie nie wieder ausbrechen werden, nennt man erloschen."
+  ],
+  "exercises": [
+    {
+      "type": "multiple-choice",
+      "question": "Wie nennt man geschmolzenes Gestein, solange es noch unter der Erde ist?",
+      "options": ["Lava", "Magma", "Asche", "Kruste"],
+      "answer": "Magma",
+      "explanation": "Unter der Erde heißt es Magma, an der Oberfläche heißt es Lava."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "Warum steigt Magma nach oben?",
+      "options": [
+        "Weil es leichter ist als das feste Gestein um es herum",
+        "Weil Vulkane es nach oben ziehen",
+        "Weil es kälter ist als das Gestein um es herum",
+        "Weil der Regen es nach oben drückt"
+      ],
+      "answer": "Weil es leichter ist als das feste Gestein um es herum"
+    },
+    {
+      "type": "multiple-choice",
+      "question": "Welche Stadt wurde bei einem Ausbruch des Vesuvs verschüttet?",
+      "options": ["Rom", "Hawaii", "Pompeji", "Neapel"],
+      "answer": "Pompeji"
+    },
+    {
+      "type": "categorize",
+      "question": "Ordne jede Beschreibung der richtigen Vulkanart zu.",
+      "categories": ["Aktiv", "Ruhend", "Erloschen"],
+      "items": [
+        { "text": "Ist letztes Jahr ausgebrochen", "category": "Aktiv" },
+        { "text": "Könnte bald wieder ausbrechen", "category": "Aktiv" },
+        { "text": "„Schläft“", "category": "Ruhend" },
+        { "text": "Lange still, könnte aber wieder erwachen", "category": "Ruhend" },
+        { "text": "Wird nie wieder ausbrechen", "category": "Erloschen" }
+      ]
+    }
+  ]
+}
