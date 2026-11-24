@@ -45,5 +45,10 @@
         { "text": "Nunca volverá a entrar en erupción", "category": "Extinto" }
       ]
     }
-  ]
+  ],
+  "wordTypes": {
+    "nouns": ["magma", "roca", "ceniza", "erupción"],
+    "verbs": ["sube", "derrite", "fluye", "explotan"],
+    "adjectives": ["caliente", "sólida", "líquida", "activos"]
+  }
 }

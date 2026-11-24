@@ -12,6 +12,7 @@ A simple reading-and-quiz app for kids aged 11–14, in **German and Spanish**. 
    - After checking, the right and wrong answers are highlighted, with a short message and the optional explanation. The answer can no longer be changed.
    - **Next →** goes to the next exercise.
    - A **Re-read the text** panel above the exercise lets the kid look back at the text at any time.
+   - The **last exercise** of a lesson is usually a **word-types** exercise: words taken from the text are sorted into nouns, verbs and adjectives (see "Word types" below). Grammar is practised on the text the kid just read, not in a separate lesson.
 4. **Results.** At the end the kid sees their score (e.g. `7 / 9`), the percentage, an encouraging message, and "New personal best!" if they beat their previous score. They can **Try again** or go **Back to lessons**.
 
 ### Scoring
@@ -20,6 +21,7 @@ A simple reading-and-quiz app for kids aged 11–14, in **German and Spanish**. 
 |---|---|
 | Multiple choice | 1 point if correct |
 | Categorize | 1 point for each item in the right box |
+| Word types | 1 point for each word in the right box |
 
 The lesson score is the total of all exercises. Multiple-choice options are shown in the order you write them; categorize items are shuffled each time.
 
@@ -47,7 +49,7 @@ Why two files instead of one file containing both languages:
 
 - **Easier to write and read:** each file contains only one language, so there's no mixing of German and Spanish in the same place.
 - **Easier to share:** you can give the Spanish file to someone who only speaks Spanish to write or proofread it.
-- **Free to differ:** the two versions don't need to be word-for-word translations. A grammar lesson, for example, uses German words in German and Spanish words in Spanish.
+- **Free to differ:** the two versions don't need to be word-for-word translations. The word-types words, for example, are German words in German and Spanish words in Spanish.
 - **Safer:** a typo in one file only breaks that one language version; the other one still works.
 
 The two files are linked by having the **same `id`**.
@@ -57,11 +59,9 @@ lessons/
   de/
     index.json            ← list of German lesson files (in display order)
     vulkane.json          ← "id": "volcanoes"
-    wortarten.json        ← "id": "word-types"
   es/
     index.json            ← list of Spanish lesson files (in display order)
     volcanes.json         ← "id": "volcanoes"
-    clases-de-palabras.json ← "id": "word-types"
 ```
 
 ### Step by step: adding a new lesson
@@ -88,16 +88,23 @@ Example: a new lesson about the water cycle.
       "options": ["Verdunstung", "Niederschlag", "Kondensation"],
       "answer": "Verdunstung"
     }
-  ]
+  ],
+  "wordTypes": {
+    "nouns": ["Wasser", "Wolken"],
+    "verbs": ["verdunstet", "regnet"],
+    "adjectives": ["warme", "kalt"],
+    "uppercase": true
+  }
 }
 ```
+
+The words in `wordTypes` must be words from the German text, written exactly as they appear there (see "Word types" below).
 
 **3. Add it to the German list** `lessons/de/index.json`. Add the file name at the position where the lesson should appear (the list order is the order on the home page). Don't forget the comma after the previous line:
 
 ```json
 [
   "vulkane.json",
-  "wortarten.json",
   "wasserkreislauf.json"
 ]
 ```
@@ -120,16 +127,22 @@ Example: a new lesson about the water cycle.
       "options": ["Evaporación", "Precipitación", "Condensación"],
       "answer": "Evaporación"
     }
-  ]
+  ],
+  "wordTypes": {
+    "nouns": ["agua", "nubes"],
+    "verbs": ["evapora", "llueve"],
+    "adjectives": ["caliente", "frío"]
+  }
 }
 ```
+
+Here the words come from the Spanish text. They don't have to be translations of the German ones.
 
 **5. Add it to the Spanish list** `lessons/es/index.json`:
 
 ```json
 [
   "volcanes.json",
-  "clases-de-palabras.json",
   "ciclo-del-agua.json"
 ]
 ```
@@ -145,6 +158,7 @@ Example: a new lesson about the water cycle.
 - [ ] Both file names added to their language's `index.json`
 - [ ] Each multiple-choice `answer` is written exactly like one of its `options`
 - [ ] Each categorize item's `category` is written exactly like one of the `categories`
+- [ ] A `wordTypes` block with nouns, verbs and adjectives **taken from that file's text**, written exactly as in the text
 - [ ] No red box on the home page, in either language
 
 **Good to know:**
@@ -163,13 +177,59 @@ Example: a new lesson about the water cycle.
     "Erster Absatz...",
     "Zweiter Absatz..."
   ],
-  "exercises": [ ... ]
+  "exercises": [ ... ],
+  "wordTypes": { ... }
 }
 ```
 
 - `id` must be unique within a language, and the same in the German and Spanish version of a lesson; it appears in the page address.
 - `text` can be a list of paragraphs, or one string with paragraphs separated by a blank line (`\n\n`).
 - `subject` is optional.
+- `exercises` are the questions about the text (see "Exercise types").
+- `wordTypes` is optional but recommended: the words for the word-types exercise (see "Word types"). A lesson needs at least one exercise or a `wordTypes` block.
+
+### Word types
+
+Grammar is practised with words from the lesson's own text. In the `wordTypes` block you list nouns, verbs and adjectives that appear in the text. The app turns them into a drag-and-drop exercise and adds it **after all the other exercises**, so the kid first answers questions about the text and then sorts its words.
+
+German example (`lessons/de/vulkane.json`):
+
+```json
+"wordTypes": {
+  "nouns": ["Magma", "Gestein", "Asche", "Ausbruch"],
+  "verbs": ["schmilzt", "steigt", "explodieren", "schleudern"],
+  "adjectives": ["heiß", "feste", "dünnflüssige", "aktiv"],
+  "uppercase": true
+}
+```
+
+Spanish example (`lessons/es/volcanes.json`):
+
+```json
+"wordTypes": {
+  "nouns": ["magma", "roca", "ceniza", "erupción"],
+  "verbs": ["sube", "derrite", "fluye", "explotan"],
+  "adjectives": ["caliente", "sólida", "líquida", "activos"]
+}
+```
+
+| Field | Required? | What it does |
+|---|---|---|
+| `nouns` | at least one word in total | Words that belong in the **Nomen** / **Sustantivos** box |
+| `verbs` | (across the three lists) | Words that belong in the **Verben** / **Verbos** box |
+| `adjectives` | | Words that belong in the **Adjektive** / **Adjetivos** box |
+| `uppercase` | optional | `true` shows every word in CAPITALS. Use it in German, where a capital letter would give away that a word is a noun. |
+| `question` | optional | Replaces the default question ("Wörter aus dem Text: Ordne jedes Wort der richtigen Wortart zu." / "Palabras del texto: clasifica cada palabra según su clase.") |
+| `explanation` | optional | Replaces the default tip shown after checking (how to recognise a noun, verb and adjective) |
+
+Rules:
+
+- **Copy each word exactly as it appears in the text**, in the same form: `schmilzt` (not `schmelzen`), `explotan` (not `explotar`), `dünnflüssige` (not `dünnflüssig`). Capital or small letters don't matter. The app checks this: a word that isn't in the text shows a red box on the home page, naming the word.
+- **Whole words only:** `Magma` is found in "…nennt man Magma.", but `Magma` alone in "Magmakammer" would not count.
+- **Each word only once**, in one list. The same word in two lists is reported as an error.
+- **Pick clear cases.** Avoid words whose type is debatable in context (for example German adjectives used as adverbs, like "explodieren *heftig*").
+- About 3–5 words per list works well. You can leave a list out (e.g. no adjectives), but all three boxes are always shown.
+- The box names, default question and default tip are in `js/i18n.js` (`nouns`, `verbs`, `adjectives`, `wordTypesPrompt`, `wordTypesTip`).
 
 ### Exercise types
 
@@ -228,6 +288,7 @@ index.html              the page
 css/style.css           look and feel
 js/app.js               pages: lesson list, reading, quiz, results
 js/lessons.js           loads and checks lesson files
+js/word-types.js        checks the "wordTypes" block and turns it into the word-types exercise
 js/progress.js          saves scores (in the browser for now; accounts later)
 js/i18n.js              languages, flags, and all app texts (buttons, messages) in German and Spanish
 js/exercises/           one file per exercise type + index.js registry
@@ -240,6 +301,18 @@ To add a new exercise type, create a file in `js/exercises/` that exports `valid
 
 ## Changelog
 
+### 2026-11-24 – Word types inside each lesson
+
+Nouns, verbs and adjectives are no longer a separate lesson. They are now part of the exercises of each text:
+
+- **New `wordTypes` block** in the lesson files: lists of nouns, verbs and adjectives taken from the lesson's text. The app adds a drag-and-drop word-types exercise after the lesson's other exercises.
+- **Checked against the text:** every listed word must appear in the text; otherwise a red box names the word.
+- **Removed** the separate lessons `lessons/de/wortarten.json` and `lessons/es/clases-de-palabras.json`. Their tips now appear after the word-types exercise.
+- The volcano lesson has word lists in both languages.
+- Box names, default question and tip are translated in `js/i18n.js`.
+
+Status: implemented on branch `expand_questions_scope`, not yet merged into `main`.
+
 ### 2026-11-21 – German and Spanish
 
 The audience speaks only German and Spanish, so the app no longer uses English:
@@ -249,7 +322,7 @@ The audience speaks only German and Spanish, so the app no longer uses English:
 - **App texts:** all buttons and messages are translated, in `js/i18n.js`.
 - Scores are kept separately per language.
 
-Status: implemented on branch `multi_language`, not yet merged into `main`.
+Status: merged into `main`.
 
 ### 2026-11-20 – First prototype
 
