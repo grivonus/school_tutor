@@ -2,6 +2,7 @@
 // so a typo in a JSON file shows up as a clear message instead of a broken page.
 
 import { exerciseTypes, typeOf } from "./exercises/index.js";
+import { validateWordTypes, wordTypesExercise } from "./word-types.js";
 
 const cache = {};
 
@@ -32,7 +33,11 @@ export async function loadLessons(lang) {
     if (problems.length) {
       errors.push(...problems.map((p) => `${file}: ${p}`));
     } else {
-      lessons.push(result.value);
+      const lesson = result.value;
+      lesson.exercises = lesson.exercises || [];
+      // The word-types exercise always comes last, after the questions about the text.
+      if (lesson.wordTypes) lesson.exercises.push(wordTypesExercise(lesson.wordTypes, lang));
+      lessons.push(lesson);
     }
   });
 
@@ -55,11 +60,19 @@ function validateLesson(lesson) {
   for (const field of ["id", "title", "text"]) {
     if (!lesson[field]) errors.push(`missing "${field}"`);
   }
-  if (!Array.isArray(lesson.exercises) || lesson.exercises.length === 0) {
-    errors.push('"exercises" must be a list with at least one exercise');
+  if (lesson.wordTypes !== undefined && lesson.text) {
+    errors.push(...validateWordTypes(lesson.wordTypes, paragraphs(lesson.text).join("\n")));
+  }
+  const exercises = lesson.exercises ?? [];
+  if (!Array.isArray(exercises)) {
+    errors.push('"exercises" must be a list');
     return errors;
   }
-  lesson.exercises.forEach((ex, i) => {
+  if (exercises.length === 0 && lesson.wordTypes === undefined) {
+    errors.push('the lesson needs at least one exercise in "exercises" (or a "wordTypes" block)');
+    return errors;
+  }
+  exercises.forEach((ex, i) => {
     const type = typeOf(ex);
     const module = exerciseTypes[type];
     if (!module) {

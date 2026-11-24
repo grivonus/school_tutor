@@ -47,6 +47,11 @@ const TEXTS = {
     tryAgain: "Nochmal versuchen",
     backToLessons: "Zurück zu den Lektionen",
     chooseLanguage: "Sprache wählen",
+    wordTypesPrompt: "Wörter aus dem Text: Ordne jedes Wort der richtigen Wortart zu.",
+    nouns: "Nomen",
+    verbs: "Verben",
+    adjectives: "Adjektive",
+    wordTypesTip: "Tipp: Vor ein Nomen kann man „der“, „die“ oder „das“ setzen (der Vulkan). Ein Verb sagt, was jemand tut oder was geschieht (das Magma steigt). Ein Adjektiv beschreibt, wie etwas ist (das heiße Gestein).",
   },
   es: {
     loading: "Cargando…",
@@ -80,6 +85,11 @@ const TEXTS = {
     tryAgain: "Intentar de nuevo",
     backToLessons: "Volver a las lecciones",
     chooseLanguage: "Elegir idioma",
+    wordTypesPrompt: "Palabras del texto: clasifica cada palabra según su clase.",
+    nouns: "Sustantivos",
+    verbs: "Verbos",
+    adjectives: "Adjetivos",
+    wordTypesTip: "Pista: un sustantivo nombra una persona, un animal, un lugar, una cosa o una idea (el volcán). Un verbo expresa una acción o lo que pasa (el magma sube). Un adjetivo describe a un sustantivo (la roca sólida).",
   },
 };
 
@@ -115,6 +125,11 @@ export function setLanguage(lang) {
 
 // t("exerciseOf", { i: 1, n: 4 }) -> "Aufgabe 1 von 4"
 export function t(key, values = {}) {
-  const text = TEXTS[current][key] ?? TEXTS[DEFAULT_LANGUAGE][key] ?? key;
+  return tIn(current, key, values);
+}
+
+// Same as t(), but for a given language instead of the current one.
+export function tIn(lang, key, values = {}) {
+  const text = TEXTS[lang]?.[key] ?? TEXTS[DEFAULT_LANGUAGE][key] ?? key;
   return text.replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
 }
